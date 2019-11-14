@@ -106,6 +106,7 @@ public class TPCHMain {
 			.param("scaleFactor", args[2])
 			.param("databasePath", args[3])
 			.param("queryPath", args[4])
+			.jvm(args[5])
 			.build();
 
 		//Hack to find org.openjdk.jmh.runner.ForkedMain class, because TPCHMain is called from maven exec plugin
@@ -115,6 +116,7 @@ public class TPCHMain {
 		for(URL url : classLoader.getURLs())
 			classpath.append(url.getPath()).append(File.pathSeparator);
 		System.setProperty("java.class.path", classpath.toString());
+		System.setProperty("java.vm.name", "Maxine!!!");
 
 		new Runner(opt).run();
 	}

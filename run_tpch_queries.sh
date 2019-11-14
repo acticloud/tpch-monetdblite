@@ -104,7 +104,7 @@ type mvn 1>/dev/null || abort_script "maven unavailable"
 
 mvn package || abort_script "Error while compiling tpchbenchmark maven project"
 
-mvn exec:java -Dexec.mainClass="nl.cwi.monetdb.TPCH.TPCHMain" -Dexec.args="evaluate $database $scale_factor $input_path $tpch_query_dir" || abort_script "Error while running TPC-H benchmark"
+mvn exec:java -Dexec.mainClass="nl.cwi.monetdb.TPCH.TPCHMain" -Dexec.args="evaluate $database $scale_factor $input_path $tpch_query_dir $JVM_TO_EVAL" || abort_script "Error while running TPC-H benchmark"
 
 popd > /dev/null
 

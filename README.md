@@ -15,19 +15,12 @@ Run TPC-H benchmarks on MonetDBLite and other databases for the JVM.
 Don't forget to init the repository's submodule : `git clone --recurse-submodules ...` or after cloning, 
 `git submodule update --init --recursive`.
 
-Currently, Maxine VM's compiler has several bugs and OpenJDK's one should be used instead. The `compiler`
-profile will set the directory for the right compiler to use. At the same time, I'm using a SNAPSHOT
+At the same time, I'm using a SNAPSHOT
 release for MonetDBLite-Java, and Sonatype's snapshot repository is not enabled by default. The 
 `allow-snapshots` repository enables it.
 
 On the `settings.xml` file of Apache Maven add the two profiles:
 
-    <profile>
-      <id>compiler</id>
-      <properties>
-        <JAVACOMPILEHOME>@@REPLACE_ME_WITH_JAVAC_DIRECTORY@@</JAVACOMPILEHOME>
-      </properties>
-    </profile>
     <profile>
       <id>allow-snapshots</id>
       <activation><activeByDefault>true</activeByDefault></activation>
@@ -43,10 +36,13 @@ On the `settings.xml` file of Apache Maven add the two profiles:
 
 Also set them to active under the active profiles tab:
 
-    <activeProfile>compiler</activeProfile>
     <activeProfile>allow-snapshots</activeProfile>
 
-The `$JAVA_HOME` environment variable, must be set with the path of the JDK with the JVM to benchmark.
+The `$JVM_TO_EVAL` environment variable, must be set with the path to the `java` command of the JVM to benchmark, e.g.
+
+```sh
+export JVM_TO_EVAL=/opt/code/maxine-src/maxine/maxjdk/bin/java
+```
 
 On the cloned tpch-monetdblite directory the following scripts are available:
 
