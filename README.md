@@ -1,3 +1,6 @@
+# Acknowledgments
+This software has been funded by the European Unions Horizon 2020 research and innovation programme under Grant Agreement no. 732366 (ACTiCLOUD).
+
 # tpch-monetdblite
 Run TPC-H benchmarks on MonetDBLite and other databases for the JVM.
 
